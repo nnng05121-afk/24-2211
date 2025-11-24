@@ -17,6 +17,14 @@ export interface SolarTerm {
   pentads: string[]; // The "Three Pentads" (一候, 二候, 三候)
   farming: string; // Agricultural activities
   diet: string; // Health/Diet advice (Yang Sheng)
+  
+  // NEW: Extended structured info for the new Tabbed Modal
+  extendedInfo?: {
+      astronomy: string; // Specific astronomical position/angle details
+      phenology_detail: string; // Detailed explanation of the pentads
+      culture: string; // Folk customs and ceremonies
+      modern: string; // Modern scientific relevance
+  };
 }
 
 export enum Season {

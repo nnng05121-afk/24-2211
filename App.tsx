@@ -6,17 +6,17 @@ import SeasonGrid from './components/SeasonGrid';
 import Encyclopedia from './components/Encyclopedia';
 import TermModal from './components/TermModal';
 import IntroSection from './components/IntroSection';
-import CultureSection from './components/CultureSection';
 import ChatWidget from './components/ChatWidget';
-import TimelineSection from './components/TimelineSection';
 import SeasonImmersive from './components/SeasonImmersive';
 import PentadMap from './components/PentadMap';
 import TCMSection from './components/TCMSection';
+import SolarOrbitSystem from './components/SolarOrbitSystem';
 import QuoteSeparator from './components/QuoteSeparator';
+import CosmicArchives from './components/CosmicArchives'; // IMPORTED
 import { FullTrendChart, AttributeRadar, TrendChart } from './components/Charts';
 import { SOLAR_TERMS } from './constants';
 import { SolarTerm } from './types';
-import { Activity, Radio, ChevronDown, Database, Globe, Map } from 'lucide-react';
+import { Activity, Radio, ChevronDown, Database, Globe } from 'lucide-react';
 
 const App: React.FC = () => {
   const [selectedTerm, setSelectedTerm] = useState<SolarTerm>(SOLAR_TERMS[0]);
@@ -62,11 +62,12 @@ const App: React.FC = () => {
         {/* === PART 1: INTRO CONTEXT === */}
         <IntroSection />
         
-        {/* === PART 2: TIMELINE (HISTORY) === */}
-        <div className="flex items-center justify-center gap-4 my-12 opacity-30">
-            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-        </div>
-        <TimelineSection />
+        {/* === PART 2: SOLAR ORBIT SYSTEM (Astronomy Core) === */}
+        <SolarOrbitSystem 
+            terms={SOLAR_TERMS} 
+            selectedTerm={selectedTerm} 
+            onSelectTerm={setSelectedTerm} 
+        />
 
         <QuoteSeparator index={0} />
 
@@ -125,20 +126,23 @@ const App: React.FC = () => {
             <div className="h-[1px] w-20 bg-gradient-to-l from-transparent to-cosmos-green"></div>
         </div>
 
-        {/* === PART 4: ENCYCLOPEDIA (TEXT) === */}
-        <Encyclopedia />
+        {/* === PART 4: COSMIC ARCHIVES (NEW MASSIVE TEXT SECTION) === */}
+        <CosmicArchives />
 
         <QuoteSeparator index={1} />
 
         {/* === PART 5: SEASONAL IMMERSIVE (FULL SCREENS) === */}
         <SeasonImmersive terms={SOLAR_TERMS} />
 
-        {/* === PART 6: PENTAD MATRIX (DATA) === */}
+        {/* === PART 6: ENCYCLOPEDIA (TEXT) === */}
+        <Encyclopedia />
+
+        {/* === PART 7: PENTAD MATRIX (DATA) === */}
         <PentadMap terms={SOLAR_TERMS} />
 
         <QuoteSeparator index={2} />
 
-        {/* === PART 7: GLOBAL ANALYTICS === */}
+        {/* === PART 8: GLOBAL ANALYTICS === */}
         <section className="mb-24 container mx-auto px-6">
              <div className="border-l-4 border-cosmos-cyan pl-6 mb-8">
                 <h2 className="text-3xl font-bold text-white mb-2">气候数据全景</h2>
@@ -153,11 +157,13 @@ const App: React.FC = () => {
 
         <QuoteSeparator index={3} />
 
-        {/* === PART 8: TCM / YANG SHENG (BIO-RHYTHM) === */}
+        {/* === PART 9: TCM / YANG SHENG (BIO-RHYTHM) === */}
         <TCMSection />
 
-        {/* === PART 9: SEASONAL ARCHIVE (GRID) === */}
-        <section className="mb-24 container mx-auto px-6">
+        <QuoteSeparator index={0} />
+
+        {/* === PART 10: SEASONAL ARCHIVE (GRID) === */}
+        <section className="mb-24 mt-24 container mx-auto px-6">
             <div className="flex items-center gap-3 mb-12">
                  <Database className="text-cosmos-green" />
                  <h2 className="text-3xl font-bold text-white">节气档案 (ARCHIVE)</h2>
@@ -165,14 +171,11 @@ const App: React.FC = () => {
             <SeasonGrid terms={SOLAR_TERMS} onSelectTerm={setSelectedTerm} onOpenModal={handleOpenModal} />
         </section>
 
-        {/* === PART 10: CULTURE (OUTRO) === */}
-        <CultureSection />
-
         {/* FOOTER */}
         <footer className="mt-12 border-t border-white/10 pt-10 pb-20 text-center">
             <div className="flex items-center justify-center gap-2 text-cosmos-green font-mono text-sm mb-4">
                 <Globe size={16} />
-                <span>SOLAR TERM COSMOS v3.0</span>
+                <span>SOLAR TERM COSMOS v3.2</span>
             </div>
             <p className="text-gray-600 text-xs max-w-md mx-auto leading-relaxed">
                 以未来主义数据视角重构东方古老智慧。
